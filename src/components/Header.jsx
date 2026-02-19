@@ -5,6 +5,18 @@ import logo from '../assets/logo.png';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // Mock product data for search
+  const products = [
+    { id: 1, name: "Premium Corporate Set - Sr 171", type: "Corporate", price: "₹1,250" },
+    { id: 2, name: "Designer Jute Bag - Sr 183", type: "Wedding", price: "₹450" },
+    { id: 3, name: "Luxury Gift Box - Sr 184", type: "Housewarming", price: "₹2,100" },
+    { id: 4, name: "Traditional Thali - Sr 182", type: "Wedding", price: "₹850" },
+    { id: 5, name: "Eco Friendly Return Gift", type: "Baby Shower", price: "₹150" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +26,24 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (searchQuery.trim().length > 1) {
+      const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.type.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filtered);
+      setShowSuggestions(true);
+    } else {
+      setSearchResults([]);
+      setShowSuggestions(false);
+    }
+  }, [searchQuery]);
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500`}>
       {/* Top Bar - Maroon Inspired by Wedtree */}
-      <div className={`bg-[#7b0f26] text-white py-1 px-4 text-[11px] sm:text-xs transition-all duration-300 ${isScrolled ? 'h-0 py-0 overflow-hidden' : 'h-auto'}`}>
+      <div className={`bg-[#800a1f] text-white py-1 px-4 text-[11px] sm:text-xs transition-all duration-300 ${isScrolled ? 'h-0 py-0 overflow-hidden' : 'h-auto'}`}>
         <div className="container mx-auto flex justify-between items-center bg-transparent border-0 p-0">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1"><Phone size={12} /> +91 9443232172</span>
@@ -48,14 +74,41 @@ const Header = () => {
 
           {/* Desktop Search Bar - Wedtree inspired visible search */}
           <div className="hidden lg:flex flex-1 max-w-md relative group">
-            <input
-              type="text"
-              placeholder="Search for return gifts, wedding favors..."
-              className="w-full py-2.5 px-5 pr-10 rounded-full border border-gray-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-sm bg-gray-50/50 group-hover:bg-white"
-            />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
-              <Search size={18} />
-            </button>
+            <div className="w-full relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                onFocus={() => searchQuery.length > 1 && setShowSuggestions(true)}
+                placeholder="Search for return gifts, wedding favors..."
+                className="w-full py-2.5 px-5 pr-10 rounded-full border border-gray-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-sm bg-gray-50/50 group-hover:bg-white"
+              />
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+                <Search size={18} />
+              </button>
+
+              {/* Live Search Suggestions */}
+              {showSuggestions && (
+                <div className="absolute top-full left-0 w-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
+                  <div className="p-2">
+                    {searchResults.length > 0 ? (
+                      searchResults.map((p) => (
+                        <div key={p.id} className="p-3 hover:bg-gray-50 rounded-xl cursor-pointer flex items-center justify-between group transition-colors">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-semibold text-gray-800 group-hover:text-primary transition-colors">{p.name}</span>
+                            <span className="text-[10px] uppercase tracking-wider text-gray-400">{p.type}</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-900">{p.price}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-4 text-center text-sm text-gray-500">No results found for "{searchQuery}"</div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Desktop Nav */}

@@ -49,40 +49,48 @@ const occasions = [
 
 export const Occasions = () => {
     return (
-        <section id="occasions" className="py-24 bg-[#FDF2F2]">
+        <section id="occasions" className="py-32 bg-[#fffafa]">
             <div className="container mx-auto px-4">
-                <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                    <span className="text-primary font-bold uppercase tracking-[0.2em] text-sm italic">Gift for every moment</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-serif">Gifts for All <span className="text-primary italic">Occasions</span></h2>
+                <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="text-primary font-bold uppercase tracking-[0.25em] text-xs italic"
+                    >
+                        Celebrations Refined
+                    </motion.span>
+                    <h2 className="text-5xl md:text-6xl font-bold text-gray-900 font-serif tracking-tight">
+                        Gifts for All <span className="text-primary italic">Occasions</span>
+                    </h2>
                     <div className="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
-                    <p className="text-gray-600 pt-4">
-                        Whether it's a grand wedding or an intimate birthday celebration,
-                        we have the perfect return gift to match your style and budget.
+                    <p className="text-gray-500 pt-4 text-lg leading-relaxed">
+                        Curated experiences for life's most precious milestones.
+                        Choose excellence for your special moments.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {occasions.map((occasion, index) => (
                         <motion.div
                             key={occasion.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -10 }}
-                            className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all group flex flex-col items-center text-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            whileHover={{ y: -15, scale: 1.02 }}
+                            className="bg-white p-10 rounded-[2.5rem] shadow-premium hover:shadow-2xl transition-all duration-500 border border-gray-50 group flex flex-col items-center text-center transform-gpu"
                         >
-                            <div className={`${occasion.color} w-20 h-20 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20`}>
-                                {occasion.icon}
+                            <div className={`${occasion.color} w-24 h-24 rounded-[2rem] flex items-center justify-center text-white mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-xl shadow-primary/10`}>
+                                {React.cloneElement(occasion.icon, { size: 36 })}
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-4 font-serif italic group-hover:text-primary transition-colors">
                                 {occasion.title}
                             </h3>
-                            <p className="text-gray-500 leading-relaxed mb-6">
-                                {occasion.description}
+                            <p className="text-gray-500 leading-relaxed mb-8 font-medium italic">
+                                "{occasion.description}"
                             </p>
-                            <button className="text-primary font-bold text-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-8 transition-all">
-                                Explore Gifts
+                            <button className="text-[11px] font-bold text-gray-900 hover:text-primary transition-colors underline decoration-primary/20 decoration-2 underline-offset-8 tracking-[0.2em] uppercase">
+                                Explore Collection
                             </button>
                         </motion.div>
                     ))}
@@ -94,29 +102,32 @@ export const Occasions = () => {
 
 export const TrustSection = () => {
     const features = [
-        { icon: <Handshake className="text-primary" size={32} />, title: "Bulk Order Support", desc: "Special pricing for 100+ units" },
-        { icon: <Zap className="text-primary" size={32} />, title: "Customization", desc: "Personalized tags & packaging" },
-        { icon: <Truck className="text-primary" size={32} />, title: "Safe Shipping", desc: "Pan India breakage-free delivery" },
-        { icon: <ShieldCheck className="text-primary" size={32} />, title: "Quality Assurance", desc: "Premium handpicked collections" }
+        { icon: <Handshake className="text-primary" size={36} />, title: "Bulk Support", desc: "Special pricing for 100+ units" },
+        { icon: <Zap className="text-primary" size={36} />, title: "Personalization", desc: "Customized tags & packaging" },
+        { icon: <Truck className="text-primary" size={36} />, title: "Safe Delivery", desc: "Breakage-free Pan India" },
+        { icon: <ShieldCheck className="text-primary" size={36} />, title: "Premium Quality", desc: "Handpicked collections" }
     ];
 
     return (
-        <section className="bg-white py-20 border-t border-gray-100">
+        <section className="bg-white py-24 border-t border-gray-50">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
                     {features.map((f, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="flex flex-col items-center text-center space-y-4"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1, duration: 0.5 }}
+                            viewport={{ once: true }}
+                            className="flex flex-col items-center text-center space-y-6 group"
                         >
-                            <div className="p-5 bg-[#FDF2F2] rounded-full shadow-inner group transition-colors">
+                            <div className="w-20 h-20 flex items-center justify-center bg-[#fffafa] rounded-3xl shadow-premium border border-primary/5 group-hover:scale-110 group-hover:bg-primary/5 transition-all duration-500 transform-gpu">
                                 {f.icon}
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900">{f.title}</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+                            <div className="space-y-2">
+                                <h3 className="text-xl font-bold text-gray-900 tracking-tight">{f.title}</h3>
+                                <p className="text-sm text-gray-400 font-medium leading-relaxed">{f.desc}</p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

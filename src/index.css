@@ -1,21 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
-  --color-primary: #91132D;
-  /* Deep Maroon */
-  --color-secondary: #FFD700;
-  /* Glistening Gold */
-  --color-accent: #FDF2F2;
-  /* Soft Pinkish Cream */
-  --gold-primary: #D4AF37;
-  --gold-light: #F1D592;
-  --gold-dark: #A68910;
-  --pastel-cream: #FDF8F4;
-  --pastel-pink: #FCE8E6;
-  --text-main: #2C2C2C;
+  --color-primary: #800a1f;
+  /* Richer, deeper maroon */
+  --color-secondary: #d4af37;
+  /* Metallic Champagne Gold */
+  --color-accent: #fffafa;
+  /* Snow White for better contrast */
+  --text-main: #1a1a1a;
   --text-muted: #666666;
   --white: #FFFFFF;
   --bg-soft: #FAFAFA;
+  --shadow-premium: 0 10px 30px rgba(128, 10, 31, 0.05), 0 1px 8px rgba(0, 0, 0, 0.02);
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -26,6 +22,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
