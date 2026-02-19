@@ -5,7 +5,7 @@ import diaryImg from '../assets/diary_premium.jpg';
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-bg-soft">
+        <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-bg-soft">
             {/* Background Decor */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-pastel-pink/30 -skew-x-12 transform origin-top-right z-0" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-light/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 z-0" />

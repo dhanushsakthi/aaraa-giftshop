@@ -15,13 +15,19 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container px-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Aaraa" className="max-h-12 w-auto object-contain pointer-events-none" />
-          <span className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-800'}`}>AARAA GIFT SHOP</span>
-        </div>
+        <a href="#" className="flex items-center gap-4 group transition-transform hover:scale-105">
+          <img
+            src={logo}
+            alt="Aaraa"
+            className={`object-contain transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'} w-auto`}
+          />
+          <span className={`text-xl font-bold tracking-tight transition-colors ${isScrolled ? 'text-gray-900 group-hover:text-gold-primary' : 'text-gray-800'}`}>
+            AARAA GIFT SHOP
+          </span>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
