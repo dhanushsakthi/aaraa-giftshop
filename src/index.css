@@ -187,6 +187,34 @@ section {
   min-height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.max-h-12 {
+  max-height: 3rem;
+}
+
+.max-h-16 {
+  max-height: 4rem;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .relative {
   position: relative;
 }
