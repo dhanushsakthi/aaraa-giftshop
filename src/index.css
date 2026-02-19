@@ -302,6 +302,14 @@ section {
   background-color: var(--pastel-cream);
 }
 
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
 .md\:flex {
   @media (min-width: 768px) {
     display: flex;
