@@ -19,7 +19,7 @@ const Header = () => {
       <div className="container px-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <img src={logo} alt="Aaraa" className="h-12 w-12 object-contain" />
+          <img src={logo} alt="Aaraa" className="max-h-12 w-auto object-contain pointer-events-none" />
           <span className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-800'}`}>AARAA GIFT SHOP</span>
         </div>
 
@@ -30,12 +30,12 @@ const Header = () => {
             <span>Return Gifts</span>
             <ChevronDown size={16} />
             <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 rounded-b-md border-t-2 border-gold-primary">
-               <div className="py-2">
-                 <a href="#wedding" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Wedding Gifts</a>
-                 <a href="#baby-shower" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Baby Shower</a>
-                 <a href="#housewarming" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Housewarming</a>
-                 <a href="#corporate" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Corporate Gifts</a>
-               </div>
+              <div className="py-2">
+                <a href="#wedding" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Wedding Gifts</a>
+                <a href="#baby-shower" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Baby Shower</a>
+                <a href="#housewarming" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Housewarming</a>
+                <a href="#corporate" className="block px-4 py-2 hover:bg-pastel-cream text-sm text-gray-700">Corporate Gifts</a>
+              </div>
             </div>
           </div>
           <a href="#categories" className="font-medium text-gray-700 hover:text-gold-primary transition-colors">Categories</a>
@@ -72,7 +72,8 @@ const Header = () => {
       )}
 
       {/* Tailwind classes used (manual check): fixed, transition, z-50, shadow-md, bg-transparent, bg-white, py-2, py-4, container, px-4, flex, items-center, justify-between, gap-4, h-12, w-12, object-contain, text-xl, font-bold, tracking-tight, text-gray-900, text-gray-800, hidden, md:flex, gap-8, font-medium, text-gray-700, hover:text-gold-primary, transition-colors, relative, group, cursor-pointer, size-16, absolute, top-full, left-0, mt-2, w-48, shadow-xl, opacity-0, invisible, group-hover:opacity-100, group-hover:visible, rounded-b-md, border-t-2, border-gold-primary, block, py-2, hover:bg-pastel-cream, text-sm, gap-5, -top-2, -right-2, text-[10px], h-4, w-4, rounded-full, md:hidden, animate-in, fade-in, slide-in-from-top-4, flex-col, border-b, border-gray-50, text-lg, justify-between */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .header-scrolled { background-color: white; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
         .nav-link { color: #374151; transition: color 0.3s; }
         .nav-link:hover { color: #D4AF37; }

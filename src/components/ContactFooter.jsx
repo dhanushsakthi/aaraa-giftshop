@@ -98,7 +98,7 @@ export const ContactFooter = () => {
                 </div>
 
                 <div className="border-t border-gray-800 pt-10 text-center">
-                    <img src="/src/assets/logo.png" alt="Aaraa" className="h-16 mx-auto mb-6" />
+                    <img src="/src/assets/logo.png" alt="Aaraa" className="max-h-16 w-auto mx-auto mb-6 object-contain pointer-events-none" />
                     <p className="text-gray-500 text-sm mb-2">© 2026 Aaraa Gift Shop. All Rights Reserved.</p>
                     <p className="text-gray-600 text-[12px]">Designed with elegance for premium gifting experiences.</p>
                 </div>
